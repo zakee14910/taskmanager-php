@@ -13,7 +13,7 @@
             <a href="<?php echo SITEURL; ?>manage-list.php">Manage Lists</a>
         </div>
         <div class="all-tasks">
-        <a href="http://">Add Task</a>
+        <a href="<?php echo SITEURL; ?>add-task.php">Add Task</a>
         <table>
             <tr>
                 <th>S.N</th>
