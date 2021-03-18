@@ -12,6 +12,14 @@
             <a href="">Done</a>
             <a href="<?php echo SITEURL; ?>manage-list.php">Manage Lists</a>
         </div>
+        <p>
+            <?php
+                if(isset($_SESSION['add'])){
+                    echo $_SESSION['add'];
+                    unset($_SESSION['add']);
+                }
+            ?>
+        </p>
         <div class="all-tasks">
         <a href="<?php echo SITEURL; ?>add-task.php">Add Task</a>
         <table>
@@ -37,3 +45,4 @@
         </div>
     </body>
 </html>
+41.06
