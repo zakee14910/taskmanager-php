@@ -30,19 +30,54 @@
                 <th>Deadline</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td>1.</td>
-                <td>Design</td>
-                <td>Medium</td>
-                <td>23/05/2020</td>
-                <td>
-                    <a href="http://">Update</a>
-                    <a href="http://">Delete</a>  
-                </td>
-            </tr>
+            <?php
+                $conn = mysqli_connect(LOCALHOST,DB_USERNAME,DB_PASSWORD) or die(mysqli_error());
+                $db_select = mysqli_select_db($conn,DB_NAME);
+        
+                $sql = "SELECT * FROM tbl_tasks";
+        
+                $res = mysqli_query($conn,$sql);
+
+                if($res == true){
+                    $count_rows = mysqli_num_rows($res);
+                     $sn = 1;
+                    if($count_rows>0)
+                    {
+                        while($row=mysqli_fetch_assoc($res)){
+                            $task_id = $row['task_id'];
+                            $task_name = $row['task_name'];
+                            $priority = $row['piority'];
+                            $deadline = $row['deadline']
+                        ?> 
+                            <tr>
+                                <td><?php echo $sn++; ?></td>
+                                <td><?php echo $task_name; ?></td>
+                                <td><?php echo $priority; ?></td>
+                                <td><?php echo $deadline; ?></td>
+                                <td>
+                                    <a href="http://">Update</a>
+                                    <a href="http://">Delete</a>  
+                                </td>
+                            </tr>
+                       <?PHP
+                       }
+                        
+                        
+                    }
+                    else
+                    {
+                       ?> 
+                            <tr>
+                                <td colspan="5">No Tasks Added.</td>
+                            </tr>
+                       <?PHP
+                    }
+                }
+            ?>
+
+            
         </table>
             
         </div>
     </body>
 </html>
-41.06
