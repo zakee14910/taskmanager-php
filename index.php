@@ -18,6 +18,14 @@
                     echo $_SESSION['add'];
                     unset($_SESSION['add']);
                 }
+                if(isset($_SESSION['delete'])){
+                    echo $_SESSION['delete'];
+                    unset($_SESSION['delete']);
+                }
+                if(isset($_SESSION['delete_failed'])){
+                    echo $_SESSION['delete_failed'];
+                    unset($_SESSION['delete_failed']);
+                }
             ?>
         </p>
         <div class="all-tasks">
@@ -55,8 +63,8 @@
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $deadline; ?></td>
                                 <td>
-                                    <a href="http://">Update</a>
-                                    <a href="http://">Delete</a>  
+                                    <a href="<?php echo SITEURL; ?>update-task.php?task_id=<?php echo $task_id?>">Update</a>
+                                    <a href="<?php echo SITEURL; ?>delete-task.php?task_id=<?php echo $task_id?>">Delete</a>  
                                 </td>
                             </tr>
                        <?PHP
@@ -81,3 +89,4 @@
         </div>
     </body>
 </html>
+time 42.48
