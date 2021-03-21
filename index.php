@@ -26,6 +26,10 @@
                     echo $_SESSION['delete_failed'];
                     unset($_SESSION['delete_failed']);
                 }
+                if(isset($_SESSION['update'])){
+                    echo $_SESSION['update'];
+                    unset($_SESSION['update']);
+                }
             ?>
         </p>
         <div class="all-tasks">

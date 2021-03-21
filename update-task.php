@@ -31,6 +31,14 @@
             <a href="<?php echo SITEURL; ?>index.php">Home</a>
         </div>
         <h3>Update Task Page</h3>
+        <p>
+            <?php
+                if(isset($_SESSION['update_fail'])){
+                    echo $_SESSION['update_fail'];
+                    unset($_SESSION['update_fail']);
+                }
+            ?>
+        </p>
         <form method="POST" action="">
             <table>
                 <tr>
@@ -97,3 +105,35 @@
 
     </body>
 </html>
+
+<?php 
+    if(isset($_POST['submit'])){
+        // $task_id = $_GET['task_id'];
+        $task_name = $_POST['task_name'];
+        $task_desc = $_POST['task_desc'];
+        $list_id = $_POST['list_id'];
+        $priority = $_POST['priority'];
+        $deadline = $_POST['deadline'];
+
+        $conn3 = mysqli_connect(LOCALHOST,DB_USERNAME,DB_PASSWORD) or die(mysqli_error());
+        $db_select3 = mysqli_select_db($conn3,DB_NAME) or die(mysqli_error());
+        echo $sql3 = "UPDATE tbl_tasks SET 
+        task_name='$task_name',
+        task_desc='$task_desc',
+        list_id='$list_id',
+        piority='$priority',
+        deadline='$deadline'
+        WHERE task_id = '$task_id' ";
+        $res3 = mysqli_query($conn3,$sql3);
+
+        if($res3 == true){
+            $_SESSION['update'] = "Task Updated Successfully.";
+            header('location:'.SITEURL);
+        } 
+
+        else{
+            $_SESSION['update_fail'] = "Failed to update Successfully.";
+            header('location:'.SITEURL.'update-task.php?task_id='.$task_id);
+        }
+    }
+?>
