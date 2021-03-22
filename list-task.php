@@ -1,5 +1,7 @@
 <?php 
     include('config/constants.php');
+    $list_id_url = $_GET['list_id'];
+    
 ?>
 <html>
     <head>Task Manager with PHP</head>
@@ -33,26 +35,6 @@
                 }
             ?>
         </div>
-        <p>
-            <?php
-                if(isset($_SESSION['add'])){
-                    echo $_SESSION['add'];
-                    unset($_SESSION['add']);
-                }
-                if(isset($_SESSION['delete'])){
-                    echo $_SESSION['delete'];
-                    unset($_SESSION['delete']);
-                }
-                if(isset($_SESSION['delete_failed'])){
-                    echo $_SESSION['delete_failed'];
-                    unset($_SESSION['delete_failed']);
-                }
-                if(isset($_SESSION['update'])){
-                    echo $_SESSION['update'];
-                    unset($_SESSION['update']);
-                }
-            ?>
-        </p>
         <div class="all-tasks">
         <a href="<?php echo SITEURL; ?>add-task.php">Add Task</a>
         <table>
@@ -64,10 +46,11 @@
                 <th>Actions</th>
             </tr>
             <?php
+                
                 $conn = mysqli_connect(LOCALHOST,DB_USERNAME,DB_PASSWORD) or die(mysqli_error());
                 $db_select = mysqli_select_db($conn,DB_NAME);
         
-                $sql = "SELECT * FROM tbl_tasks";
+                $sql = "SELECT * FROM tbl_tasks WHERE list_id=$list_id_url";
         
                 $res = mysqli_query($conn,$sql);
 
@@ -101,7 +84,7 @@
                     {
                        ?> 
                             <tr>
-                                <td colspan="5">No Tasks Added.</td>
+                                <td colspan="5">No Tasks Added on this list.</td>
                             </tr>
                        <?PHP
                     }
