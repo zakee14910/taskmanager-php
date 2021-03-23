@@ -4,7 +4,10 @@
     
 ?>
 <html>
-    <head>Task Manager with PHP</head>
+    <head>
+        <title>Task Manager with PHP</title>
+        <link rel="stylesheet" href="<?php echo SITEURL; ?>/css/style.css">
+    </head>
     <body>
         <h1>Task Manager</h1>
         <div class="menu">

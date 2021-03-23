@@ -19,6 +19,7 @@
 <html>
     <head>
         <title>Task Manager with PHP</title>
+        <link rel="stylesheet" href="<?php echo SITEURL; ?>/css/style.css">
     </head>
     <body>
         <div class="menu">

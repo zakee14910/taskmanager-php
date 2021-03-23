@@ -2,7 +2,10 @@
     include('config/constants.php');
 ?>
 <html>
-    <head>Task Manager</head>
+    <head>
+        <title>Task Manager</title>
+        <link rel="stylesheet" href="<?php echo SITEURL; ?>/css/style.css">
+    </head>
     <body>
         <h1>Tasks</h1>
         <a href="<?php echo SITEURL; ?>">Home</a>
