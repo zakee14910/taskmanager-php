@@ -2,8 +2,12 @@
     include('config/constants.php');
 ?>
 <html>
-    <head>Task Manager with PHP</head>
+    <head>
+        <title>Task Manager with PHP</title>
+        <link rel="stylesheet" href="<?php echo SITEURL; ?>/css/style.css">
+    </head>
     <body>
+        <div class="wrapper">
         <h1>Task Manager</h1>
         <div class="menu">
             <a href="<?php echo SITEURL; ?>">Home</a>
@@ -112,5 +116,7 @@
         </table>
             
         </div>
+        </div>
     </body>
 </html>
+26:21
